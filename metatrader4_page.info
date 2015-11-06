@@ -1,0 +1,4 @@
+name = "Metatrader4 page"
+description = "show metatrader4 page"
+core = 7.x
+configure = admin/config/metatrader4

@@ -1,0 +1,357 @@
+<?php
+
+/**
+ * @file
+ * myblock.module
+ */ 
+ 
+/**
+ * Implements hook_menu().
+ */
+function metatrader4_page_menu(){
+	//admin
+  $items['admin/config/metatrader4'] = array(
+    'title' => 'Configuration Metatrader4',
+    'page callback' => 'config_metatrader4',
+    'access arguments' => array('metatrader4 config page'),
+  );
+
+  $items['trading-platform/how-to-download-metatrader4'] = array(
+    'title' => 'How to download Metatrader4',
+    'page callback' => 'metatrader4_page_view',
+    'access callback' => TRUE,
+    'menu_name' => 'main-menu',
+  );
+  
+   $items['trading-platform/how-to-install-metatrader4'] = array(
+    'title' => 'How to install Metatrader4',
+    'page callback' => 'metatrader4_i_page_view',
+    'access callback' => TRUE,
+    'menu_name' => 'main-menu',
+  );
+ 
+   $items['trading-platform/how-to-login-metatrader4'] = array(
+    'title' => 'How to login Metatrader4',
+    'page callback' => 'metatrader4_l_page_view',
+    'access callback' => TRUE,
+    'menu_name' => 'main-menu',
+  );
+  
+  return $items;
+}
+
+//admin
+function metatrader4_page_permission() {
+    return array(
+        'metatrader4 config page' => array(
+            'title' => t('Metatrader4 config page'),
+            'description' => t('config page.'),
+        ),
+    );
+}
+
+//admin
+function config_metatrader4() {
+	return drupal_get_form('metatrader4_page_form');
+}
+
+//admin
+function metatrader4_page_form($form, &$form_state) {
+	$form = array();
+	$form['download'] = array(
+		'#type' => 'fieldset', 
+		'#title' => t('Download'), 
+		'#collapsible' => TRUE, 
+		'#collapsed' => FALSE,
+	);
+	$metatrader4_d = explode('#', variable_get('metatrader4_d', ''));
+	$form['download']['d_desktop'] = array(
+		'#type' => 'textfield',
+		'#title' => t('Desktop nid'),
+		'#size' => 10,
+		'#maxlength' => 10,
+		'#default_value' => isset($metatrader4_d[0]) ? $metatrader4_d[0] : '',
+		'#description' => 'Enter identificator node in contgent',
+	);
+	$form['download']['d_android'] = array(
+		'#type' => 'textfield',
+		'#title' => t('Android nid'),
+		'#size' => 10,
+		'#maxlength' => 10,
+		'#default_value' => isset($metatrader4_d[1]) ? $metatrader4_d[1] : '',
+		'#description' => 'Enter identificator node in contgent',
+	);
+	$form['download']['d_iphone'] = array(
+		'#type' => 'textfield',
+		'#title' => t('Iphone nid'),
+		'#size' => 10,
+		'#maxlength' => 10,
+		'#default_value' => isset($metatrader4_d[2]) ? $metatrader4_d[2] : '',
+		'#description' => 'Enter identificator node in contgent',
+	);
+	$form['download']['d_windows'] = array(
+		'#type' => 'textfield',
+		'#title' => t('Windows mobile nid'),
+		'#size' => 10,
+		'#maxlength' => 10,
+		'#default_value' => isset($metatrader4_d[3]) ? $metatrader4_d[3] : '',
+		'#description' => 'Enter identificator node in contgent',
+	);
+	
+
+	$form['install'] = array(
+		'#type' => 'fieldset', 
+		'#title' => t('Install'), 
+		'#collapsible' => TRUE, 
+		'#collapsed' => TRUE,
+	);
+	$metatrader4_i = explode('#', variable_get('metatrader4_i', ''));
+	$form['install']['i_desktop'] = array(
+		'#type' => 'textfield',
+		'#title' => t('Desktop nid'),
+		'#size' => 10,
+		'#maxlength' => 10,
+		'#default_value' => isset($metatrader4_i[0]) ? $metatrader4_i[0] : '',
+		'#description' => 'Enter identificator node in contgent',
+	);
+	$form['install']['i_android'] = array(
+		'#type' => 'textfield',
+		'#title' => t('Android nid'),
+		'#size' => 10,
+		'#maxlength' => 10,
+		'#default_value' => isset($metatrader4_i[1]) ? $metatrader4_i[1] : '',
+		'#description' => 'Enter identificator node in contgent',
+	);
+	$form['install']['i_iphone'] = array(
+		'#type' => 'textfield',
+		'#title' => t('Iphone nid'),
+		'#size' => 10,
+		'#maxlength' => 10,
+		'#default_value' => isset($metatrader4_i[2]) ? $metatrader4_i[2] : '',
+		'#description' => 'Enter identificator node in contgent',
+	);
+	$form['install']['i_windows'] = array(
+		'#type' => 'textfield',
+		'#title' => t('Windows mobile nid'),
+		'#size' => 10,
+		'#maxlength' => 10,
+		'#default_value' => isset($metatrader4_i[3]) ? $metatrader4_i[3] : '',
+		'#description' => 'Enter identificator node in contgent',
+	);
+	
+	$form['login'] = array(
+		'#type' => 'fieldset', 
+		'#title' => t('Login'), 
+		'#collapsible' => TRUE, 
+		'#collapsed' => TRUE,
+	);
+	$metatrader4_l = explode('#', variable_get('metatrader4_l', ''));
+	$form['login']['l_desktop'] = array(
+		'#type' => 'textfield',
+		'#title' => t('Desktop nid'),
+		'#size' => 10,
+		'#maxlength' => 10,
+		'#default_value' => isset($metatrader4_l[0]) ? $metatrader4_l[0] : '',
+		'#description' => 'Enter identificator node in contgent',
+	);
+	$form['login']['l_android'] = array(
+		'#type' => 'textfield',
+		'#title' => t('Android nid'),
+		'#size' => 10,
+		'#maxlength' => 10,
+		'#default_value' => isset($metatrader4_l[1]) ? $metatrader4_l[1] : '',
+		'#description' => 'Enter identificator node in contgent',
+	);
+	$form['login']['l_iphone'] = array(
+		'#type' => 'textfield',
+		'#title' => t('Iphone nid'),
+		'#size' => 10,
+		'#maxlength' => 10,
+		'#default_value' => isset($metatrader4_l[2]) ? $metatrader4_l[2] : '',
+		'#description' => 'Enter identificator node in contgent',
+	);
+	$form['login']['l_windows'] = array(
+		'#type' => 'textfield',
+		'#title' => t('Windows mobile nid'),
+		'#size' => 10,
+		'#maxlength' => 10,
+		'#default_value' => isset($metatrader4_l[3]) ? $metatrader4_l[3] : '',
+		'#description' => 'Enter identificator node in contgent',
+	);
+	$form['submit'] = array(
+	  '#type' => 'submit',
+	  '#value' => t('Save'),
+	);
+	
+	$form['cancel'] = array(
+        '#type' => 'button',
+        '#value' => t('Cancel'),
+        '#prefix' => '&nbsp; &nbsp; &nbsp;',
+        '#attributes' => array('onClick' => 'history.go(-1); return true;'),
+        '#post_render' => array('change_button_type'),
+    );
+  
+  return $form;
+}
+
+
+//admin
+function metatrader4_page_form_submit($form, &$form_state) {
+	variable_set('metatrader4_d', 
+		$form['download']['d_desktop']['#value'].'#'.
+		$form['download']['d_android']['#value'].'#'.
+		$form['download']['d_iphone']['#value'].'#'.
+		$form['download']['d_windows']['#value']);
+	variable_set('metatrader4_i', 
+		$form['install']['i_desktop']['#value'].'#'.
+		$form['install']['i_android']['#value'].'#'.
+		$form['install']['i_iphone']['#value'].'#'.
+		$form['install']['i_windows']['#value']);
+	variable_set('metatrader4_l', 
+		$form['login']['l_desktop']['#value'].'#'.
+		$form['login']['l_android']['#value'].'#'.
+		$form['login']['l_iphone']['#value'].'#'.
+		$form['login']['l_windows']['#value']);
+}
+
+
+function metatrader4_page_view() {
+	global $language;
+	$metatrader4_d = explode('#', variable_get('metatrader4_d', ''));
+	$page = '<div id="myTabs">
+	  <!-- Nav tabs -->
+	  <ul class="nav nav-tabs" role="tablist">
+		<li role="presentation" class="active"><a href="#desktop" aria-controls="home" role="tab" data-toggle="tab">DOWNLOAD<span>for Desktop platform</span></a></li>
+		<li role="presentation"><a href="#android" aria-controls="profile" role="tab" data-toggle="tab">DOWNLOAD<span>for Android platform</span></a></li>
+		<li role="presentation"><a href="#iphone" aria-controls="messages" role="tab" data-toggle="tab">DOWNLOAD<span>for Iphone platform</span></a></li>
+		<li role="presentation"><a href="#windows" aria-controls="settings" role="tab" data-toggle="tab">DOWNLOAD<span>for Windows mobile</span></a></li>
+	  </ul>
+
+	  <!-- Tab panes -->
+	  <div class="tab-content">
+		<div role="tabpanel" class="tab-pane active" id="home">';
+		if(isset($metatrader4_d[0])){
+			$node = node_load($metatrader4_d[0]);
+			if(isset($node->body))
+				$page .= $node->body[$language->language][0]['value'];
+		}
+		$page .= '</div>
+		<div role="tabpanel" class="tab-pane" id="profile">';
+		if(isset($metatrader4_d[1])){
+			$node = node_load($metatrader4_d[1]);
+			if(isset($node->body))
+				$page .= $node->body[$language->language][0]['value'];
+		}
+		$page .= '</div>
+		<div role="tabpanel" class="tab-pane" id="messages">';
+		if(isset($metatrader4_d[2])){
+			$node = node_load($metatrader4_d[2]);
+			if(isset($node->body))
+				$page .= $node->body[$language->language][0]['value'];
+		}
+		$page .= '</div>
+		<div role="tabpanel" class="tab-pane" id="settings">';
+		if(isset($metatrader4_d[3])){
+			$node = node_load($metatrader4_d[3]);
+			if(isset($node->body))
+				$page .= $node->body[$language->language][0]['value'];
+		}
+		$page .= '</div>
+	  </div>
+	</div>';
+    return $page;
+}
+
+function metatrader4_i_page_view() {
+	global $language;
+	$metatrader4_i = explode('#', variable_get('metatrader4_i', ''));
+	$page = '<div id="myTabs">
+	  <!-- Nav tabs -->
+	  <ul class="nav nav-tabs" role="tablist">
+		<li role="presentation" class="active"><a href="#desktop" aria-controls="home" role="tab" data-toggle="tab">INSTALL<span>for Desktop platform</span></a></li>
+		<li role="presentation"><a href="#android" aria-controls="profile" role="tab" data-toggle="tab">INSTALL<span>for Android platform</span></a></li>
+		<li role="presentation"><a href="#iphone" aria-controls="messages" role="tab" data-toggle="tab">INSTALL<span>for Iphone platform</span></a></li>
+		<li role="presentation"><a href="#windows" aria-controls="settings" role="tab" data-toggle="tab">INSTALL<span>for Windows mobile</span></a></li>
+	  </ul>
+
+	  <!-- Tab panes -->
+	  <div class="tab-content">
+		<div role="tabpanel" class="tab-pane active" id="home">';
+		if(isset($metatrader4_i[0])){
+			$node = node_load($metatrader4_i[0]);
+			if(isset($node->body))
+				$page .= $node->body[$language->language][0]['value'];
+		}
+		$page .= '</div>
+		<div role="tabpanel" class="tab-pane" id="profile">';
+		if(isset($metatrader4_i[1])){
+			$node = node_load($metatrader4_i[1]);
+			if(isset($node->body))
+				$page .= $node->body[$language->language][0]['value'];
+		}
+		$page .= '</div>
+		<div role="tabpanel" class="tab-pane" id="messages">';
+		if(isset($metatrader4_i[2])){
+			$node = node_load($metatrader4_i[2]);
+			if(isset($node->body))
+				$page .= $node->body[$language->language][0]['value'];
+		}
+		$page .= '</div>
+		<div role="tabpanel" class="tab-pane" id="settings">';
+		if(isset($metatrader4_i[3])){
+			$node = node_load($metatrader4_i[3]);
+			if(isset($node->body))
+				$page .= $node->body[$language->language][0]['value'];
+		}
+		$page .= '</div>
+	  </div>
+	</div>';
+    return $page;
+}
+
+function metatrader4_l_page_view() {
+	global $language;
+	$metatrader4_l = explode('#', variable_get('metatrader4_l', ''));
+	$page = '<div id="myTabs">
+	  <!-- Nav tabs -->
+	  <ul class="nav nav-tabs" role="tablist">
+		<li role="presentation" class="active"><a href="#desktop" aria-controls="home" role="tab" data-toggle="tab">LOGIN<span>for Desktop platform</span></a></li>
+		<li role="presentation"><a href="#android" aria-controls="profile" role="tab" data-toggle="tab">LOGIN<span>for Android platform</span></a></li>
+		<li role="presentation"><a href="#iphone" aria-controls="messages" role="tab" data-toggle="tab">LOGIN<span>for Iphone platform</span></a></li>
+		<li role="presentation"><a href="#windows" aria-controls="settings" role="tab" data-toggle="tab">LOGIN<span>for Windows mobile</span></a></li>
+	  </ul>
+
+	  <!-- Tab panes -->
+	  <div class="tab-content">
+		<div role="tabpanel" class="tab-pane active" id="home">';
+		if(isset($metatrader4_l[0])){
+			$node = node_load($metatrader4_l[0]);
+			if(isset($node->body))
+				$page .= $node->body[$language->language][0]['value'];
+		}
+		$page .= '</div>
+		<div role="tabpanel" class="tab-pane" id="profile">';
+		if(isset($metatrader4_l[1])){
+			$node = node_load($metatrader4_l[1]);
+			if(isset($node->body))
+				$page .= $node->body[$language->language][0]['value'];
+		}
+		$page .= '</div>
+		<div role="tabpanel" class="tab-pane" id="messages">';
+		if(isset($metatrader4_l[2])){
+			$node = node_load($metatrader4_l[2]);
+			if(isset($node->body))
+				$page .= $node->body[$language->language][0]['value'];
+		}
+		$page .= '</div>
+		<div role="tabpanel" class="tab-pane" id="settings">';
+		if(isset($metatrader4_l[3])){
+			$node = node_load($metatrader4_l[3]);
+			if(isset($node->body))
+				$page .= $node->body[$language->language][0]['value'];
+		}
+		$page .= '</div>
+	  </div>
+	</div>';
+    return $page;
+}
