@@ -229,28 +229,28 @@ function metatrader4_page_view() {
 
 	  <!-- Tab panes -->
 	  <div class="tab-content">
-		<div role="tabpanel" class="tab-pane active" id="home">';
+		<div role="tabpanel" class="tab-pane active" id="desktop">';
 		if(isset($metatrader4_d[0])){
 			$node = node_load($metatrader4_d[0]);
 			if(isset($node->body))
 				$page .= $node->body[$language->language][0]['value'];
 		}
 		$page .= '</div>
-		<div role="tabpanel" class="tab-pane" id="profile">';
+		<div role="tabpanel" class="tab-pane" id="android">';
 		if(isset($metatrader4_d[1])){
 			$node = node_load($metatrader4_d[1]);
 			if(isset($node->body))
 				$page .= $node->body[$language->language][0]['value'];
 		}
 		$page .= '</div>
-		<div role="tabpanel" class="tab-pane" id="messages">';
+		<div role="tabpanel" class="tab-pane" id="iphone">';
 		if(isset($metatrader4_d[2])){
 			$node = node_load($metatrader4_d[2]);
 			if(isset($node->body))
 				$page .= $node->body[$language->language][0]['value'];
 		}
 		$page .= '</div>
-		<div role="tabpanel" class="tab-pane" id="settings">';
+		<div role="tabpanel" class="tab-pane" id="windows">';
 		if(isset($metatrader4_d[3])){
 			$node = node_load($metatrader4_d[3]);
 			if(isset($node->body))
@@ -276,28 +276,28 @@ function metatrader4_i_page_view() {
 
 	  <!-- Tab panes -->
 	  <div class="tab-content">
-		<div role="tabpanel" class="tab-pane active" id="home">';
+		<div role="tabpanel" class="tab-pane active" id="desktop">';
 		if(isset($metatrader4_i[0])){
 			$node = node_load($metatrader4_i[0]);
 			if(isset($node->body))
 				$page .= $node->body[$language->language][0]['value'];
 		}
 		$page .= '</div>
-		<div role="tabpanel" class="tab-pane" id="profile">';
+		<div role="tabpanel" class="tab-pane" id="android">';
 		if(isset($metatrader4_i[1])){
 			$node = node_load($metatrader4_i[1]);
 			if(isset($node->body))
 				$page .= $node->body[$language->language][0]['value'];
 		}
 		$page .= '</div>
-		<div role="tabpanel" class="tab-pane" id="messages">';
+		<div role="tabpanel" class="tab-pane" id="iphone">';
 		if(isset($metatrader4_i[2])){
 			$node = node_load($metatrader4_i[2]);
 			if(isset($node->body))
 				$page .= $node->body[$language->language][0]['value'];
 		}
 		$page .= '</div>
-		<div role="tabpanel" class="tab-pane" id="settings">';
+		<div role="tabpanel" class="tab-pane" id="windows">';
 		if(isset($metatrader4_i[3])){
 			$node = node_load($metatrader4_i[3]);
 			if(isset($node->body))
@@ -323,28 +323,28 @@ function metatrader4_l_page_view() {
 
 	  <!-- Tab panes -->
 	  <div class="tab-content">
-		<div role="tabpanel" class="tab-pane active" id="home">';
+		<div role="tabpanel" class="tab-pane active" id="desktop">';
 		if(isset($metatrader4_l[0])){
 			$node = node_load($metatrader4_l[0]);
 			if(isset($node->body))
 				$page .= $node->body[$language->language][0]['value'];
 		}
 		$page .= '</div>
-		<div role="tabpanel" class="tab-pane" id="profile">';
+		<div role="tabpanel" class="tab-pane" id="android">';
 		if(isset($metatrader4_l[1])){
 			$node = node_load($metatrader4_l[1]);
 			if(isset($node->body))
 				$page .= $node->body[$language->language][0]['value'];
 		}
 		$page .= '</div>
-		<div role="tabpanel" class="tab-pane" id="messages">';
+		<div role="tabpanel" class="tab-pane" id="iphone">';
 		if(isset($metatrader4_l[2])){
 			$node = node_load($metatrader4_l[2]);
 			if(isset($node->body))
 				$page .= $node->body[$language->language][0]['value'];
 		}
 		$page .= '</div>
-		<div role="tabpanel" class="tab-pane" id="settings">';
+		<div role="tabpanel" class="tab-pane" id="windows">';
 		if(isset($metatrader4_l[3])){
 			$node = node_load($metatrader4_l[3]);
 			if(isset($node->body))
